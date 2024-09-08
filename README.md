@@ -43,19 +43,14 @@ The application is built with React and Tailwind CSS for a smooth and responsive
 - **Movie Trailers and Previews:**
   - Add the option to preview trailers before watching the full movie.
 
-  ## Technologies Used
+## Technologies Used
 
 - React
 - Tailwind CSS
-- React Router*
- 
-- **YouTube API:**
-  - Used for embedding movie trailers and video content.
-
-- **ChatGPT API:**
-  - An API provided by OpenAI for integrating conversational AI into the application, enabling advanced     
-    movie recommendations and interactions.
-
+- React Router
+- **YouTube API:** Used for embedding movie trailers and video content.
+- **ChatGPT API:** An API provided by OpenAI for integrating conversational AI into the application, enabling advanced movie recommendations and interactions.
+- **The Movie Database (TMDb) API**: For providing comprehensive movie data, including details, images, and recommendations.
 
 ## Getting Started
 
