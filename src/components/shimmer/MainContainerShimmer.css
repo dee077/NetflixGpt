@@ -1,0 +1,52 @@
+.shimmer-bg {
+    background: #222;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0px,
+      rgba(255, 255, 255, 0.05) 40px,
+      rgba(255, 255, 255, 0.1) 80px
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  .shimmer-title {
+    min-width: 270px;
+    width: 25%;
+    height: 40px;
+    background: #333;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0px,
+      rgba(255, 255, 255, 0.05) 40px,
+      rgba(255, 255, 255, 0.1) 80px
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  .shimmer-text {
+    min-width: 330px;
+    max-width: 35%;
+    margin-top: 20px;
+    height: 320px;
+    background: #333;
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0px,
+      rgba(255, 255, 255, 0.05) 40px,
+      rgba(255, 255, 255, 0.1) 80px
+    );
+    /* background-size: 200% 100%; */
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  

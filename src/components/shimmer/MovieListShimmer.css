@@ -1,0 +1,35 @@
+.shimmer-card {
+    height: 180px; /* Adjust this to match the movie card image height */
+    background: #222; /* Darker background, close to black */
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0px,  /* Lighter shimmer */
+      rgba(255, 255, 255, 0.05) 40px, /* Darker shimmer */
+      rgba(255, 255, 255, 0.1) 80px   /* Lighter shimmer */
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+.shimmer-text {
+    width: 80%;
+    height: 20px;
+    background: #222; /* Darker background, close to black */
+    background-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.1) 0px,  /* Lighter shimmer */
+      rgba(255, 255, 255, 0.05) 40px, /* Darker shimmer */
+      rgba(255, 255, 255, 0.1) 80px   /* Lighter shimmer */
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+}

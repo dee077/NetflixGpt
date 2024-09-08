@@ -1,0 +1,12 @@
+.scrollbar {
+  scrollbar-color: black;
+}
+
+.scrollbar::-webkit-scrollbar {
+  display: none;
+  width: 0px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: black;
+}
