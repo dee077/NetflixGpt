@@ -1,4 +1,4 @@
-# Netflix GPT
+# Netflix GPT &nbsp;&nbsp;&nbsp;&nbsp;[Live link](https://netflix-gpt.deepanshu-sahu-projects.live/)
 
 Movies recomandation with AI.
 
