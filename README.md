@@ -51,6 +51,7 @@ The application is built with React and Tailwind CSS for a smooth and responsive
 - **YouTube API:** Used for embedding movie trailers and video content.
 - **ChatGPT API:** An API provided by OpenAI for integrating conversational AI into the application, enabling advanced movie recommendations and interactions.
 - **The Movie Database (TMDb) API**: For providing comprehensive movie data, including details, images, and recommendations.
+- Firebase
 
 ## Getting Started
 
