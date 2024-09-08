@@ -1,5 +1,7 @@
 # Netflix GPT &nbsp;&nbsp;&nbsp;&nbsp;[Live link](https://netflix-gpt.deepanshu-sahu-projects.live/)
 
+![Netflix GPT](./src/images/ss.png)
+
 Movies recomandation with AI.
 
 ## Setup
