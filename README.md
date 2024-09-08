@@ -75,8 +75,6 @@ Before running the project, ensure you have the following installed:
 
 2. **Install Dependencies:**
 
-    Using npm:
-
     ```bash
     npm install
     ```
@@ -98,8 +96,6 @@ Before running the project, ensure you have the following installed:
     ```
 
 4. **Run the Application:**
-
-    Using npm:
 
     ```bash
     npm start
