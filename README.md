@@ -86,8 +86,6 @@ Before running the project, ensure you have the following installed:
     Create a `.env` file in the root directory and add your environment variables. You’ll need to include:
 
     ```env
-    REACT_APP_CHATGPT_API_KEY = your-value 
-    REACT_APP_YOUTUBE_API_KEY=your-youtube-api-key = your-value
     REACT_APP_THEMOVIEDB_BEARER_TOKEN = your-value 
     REACT_APP_OPENAI_API_KEY = your-value
     REACT_APP_FIREBASE_APIKEY = your-value
