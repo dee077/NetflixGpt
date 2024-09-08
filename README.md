@@ -4,104 +4,118 @@
 
 Movies recomandation with AI.
 
-## Setup
+## Description
 
-- Install react app using create-react-app (CRA)
+Netflix GPT is a web application that allows users to browse movies, view recommendations, and get personalized movie suggestions using AI. This project integrates with movie databases and uses AI to enhance the user experience by providing relevant movie suggestions.
 
-```js
-npx create-react-app netflix-gpt
-```
-
-- Install and init tailwind css
-
-```js
-npm install -D tailwindcss
-npx tailwindcss init
-```
-
-- Configure tailwind css in your project
-
-  `npx tailwindcss init` command will create a file `tailwind.config.js` in your project's root directory.
-  Open `tailwind.config.js` and replace all content with below code.
-
-```js
-/** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
-};
-```
-
-- Add the @tailwind directives for each of Tailwind’s layers to your ./src/index.css file.
-
-```css
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-```
-
-- Now you created a react app with tailwind css successfully. Now run the below command on your terminal to start your local development server.
-
-```js
-npm start
-```
+The application is built with React and Tailwind CSS for a smooth and responsive user interface, and it utilizes AI to generate personalized movie recommendations.
 
 ## Features
 
-- Home Page (is user !authorised)
+### Home Page (Unauthenticated Users)
+- **Sign In / Sign Up:** 
+  - Users can sign in or create an account using the SignInForm or SignUpForm.
 
-  - Signin/Signup Page
-    - SignInForm / SignUpForm
+### Browse Page
+- **Navbar:** 
+  - Includes search functionality, profile, and navigation options.
+- **Showcase:** 
+  - Highlights trending and popular movies.
+- **Trending Movies:** 
+  - Displays a list of trending movies fetched in real-time.
+- **Movies Suggestions:** 
+  - AI-powered suggestions based on user preferences and viewing history.
+  
+### Netflix GPT
+- **Search:** 
+  - Users can search for any movie using the search bar.
+- **Movies Suggestions:** 
+  - Displays personalized recommendations powered by AI based on search results.
 
-- Browse Page
+## Upcoming Features
 
-  - Navbar
-  - Showcase
-  - Trendings
-  - MoviesSuggestion
-    - MoviesList \* N
+- **User Watchlist:**
+  - Enable users to create and manage a watchlist for movies they plan to watch in the future.
 
-- NetflixGPT
-  - Search
-  - MoviesSuggestion
+- **Dark Mode / Light Mode:**
+  - Allow users to switch between dark mode and light mode for a better viewing experience.
 
-## Screen Shot
+- **Movie Trailers and Previews:**
+  - Add the option to preview trailers before watching the full movie.
 
-Live Demo : [Click Here](https://netflixgpt-in.netlify.app/)
+  ## Technologies Used
 
-## Screen Shot
+- React
+- Tailwind CSS
+- React Router*
+ 
+- **YouTube API:**
+  - Used for embedding movie trailers and video content.
 
-- Signin Page
+- **ChatGPT API:**
+  - An API provided by OpenAI for integrating conversational AI into the application, enabling advanced     
+    movie recommendations and interactions.
 
-  ![Signin Page](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/01-signin.png)
 
-- Signup Page
+## Getting Started
 
-  ![Signup Page](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/02-signup.png)
+### Prerequisites
 
-- Browse Page
+Before running the project, ensure you have the following installed:
 
-  ![Browse Page](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/03-browse.png)
+- **Node.js (v12 or higher):**
+  - A JavaScript runtime for building and running the application.
 
-- Movie List
+- **npm (v6 or higher) or yarn (v1.22 or higher):**
+  - Package managers used for managing project dependencies.
 
-  ![Movie List](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/04-movieList.png)
+### Installation
 
-- Search Page
+1. **Clone the repository:**
 
-  ![Search Page](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/05-searchMovies.png)
+    ```bash
+    git clone https://github.com/dee077/netflix-gpt.git
+    cd netflix-gpt
+    ```
 
-- Movie results page
+2. **Install Dependencies:**
 
-  ![Movie results](https://github.com/Anandsg/NetflixGpt/blob/main/public/screenshot/06-movieSuggestions.png)
+    Using npm:
 
-`<Happy coding />`
+    ```bash
+    npm install
+    ```
 
-If you have any questions, suggestions, or just want to connect, feel free to reach out.
+3. **Set Up Environment Variables:**
 
-Feel free to modify it to suit the tone and style of your project. The goal is to encourage participation, collaboration and learning.
+    Create a `.env` file in the root directory and add your environment variables. You’ll need to include:
 
-Made with ❤️ and React.
+    ```env
+    REACT_APP_CHATGPT_API_KEY = your-value 
+    REACT_APP_YOUTUBE_API_KEY=your-youtube-api-key = your-value
+    REACT_APP_THEMOVIEDB_BEARER_TOKEN = your-value 
+    REACT_APP_OPENAI_API_KEY = your-value
+    REACT_APP_FIREBASE_APIKEY = your-value
+    REACT_APP_FIREBASE_AUTHDOMAIN = your-value
+    REACT_APP_FIREBASE_PROJECTID = your-value
+    REACT_APP_FIREBASE_STORAGEBUCKET = your-value
+    REACT_APP_FIREBASE_MESSAGINGSENDERID = your-value
+    REACT_APP_FIREBASE_APPID = your-value
+    REACT_APP_FIREBASE_MEASUREMENTID = your-value
+    ```
+
+4. **Run the Application:**
+
+    Using npm:
+
+    ```bash
+    npm start
+    ```
+
+    The application will be available at `http://localhost:3000`.
+
+# Contributing
+
+If you would like to contribute to this project, please feel free to fork the repository, create a new branch, and submit a pull request with your changes. Contributions are always welcome!
+
+  
