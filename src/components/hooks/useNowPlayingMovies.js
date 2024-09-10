@@ -4,23 +4,21 @@ import { addNowPlayingMovies } from "../store/movieSlice";
 import { useEffect } from "react";
 
 const useNowPlayingMovies = () => {
+  // Memoization to avoid unnecessary API calls
+  const nowPlayingMovies = useSelector(
+    (store) => store.movies.nowPlayingMovies
+  );
 
-    // Memoization to avoid unnecessary API calls
-    const nowPlayingMovies = useSelector(store => store.movies.nowPlayingMovies);
+  const dispatch = useDispatch();
+  const getNowPlayingMovies = async () => {
+    const data = await fetch(DOMAIN + "/now_playing", API_OPTIONS);
+    const json = await data.json();
+    dispatch(addNowPlayingMovies(json.results));
+  };
 
-    const dispatch = useDispatch();
-    const getNowPlayingMovies = async () => {
-        const data = await
-            fetch(DOMAIN + '/now_playing',
-                API_OPTIONS
-            );
-        const json = await data.json();
-        dispatch(addNowPlayingMovies(json.results))
-    };
-
-    useEffect(() => {
-        if (!nowPlayingMovies) getNowPlayingMovies();
-    }, [])
-}
+  useEffect(() => {
+    if (!nowPlayingMovies) getNowPlayingMovies();
+  }, []);
+};
 
 export default useNowPlayingMovies;

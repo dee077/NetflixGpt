@@ -6,10 +6,7 @@ import { useEffect } from "react";
 const useUpcomingMovies = () => {
   const dispatch = useDispatch();
   const getUpcomingMovies = async () => {
-    const data = await fetch(
-      DOMAIN + '/upcoming',
-      API_OPTIONS
-    );
+    const data = await fetch(DOMAIN + "/upcoming", API_OPTIONS);
     const json = await data.json();
     dispatch(UpcomingMovies(json.results));
   };
