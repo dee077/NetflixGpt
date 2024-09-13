@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "netflixgpt-d9dc3"
-  }
+    "default": "netflix-gpt-4f698",
+    "prod": "netflix-gpt-4f698"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
