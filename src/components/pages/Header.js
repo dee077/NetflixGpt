@@ -1,6 +1,4 @@
-import { onAuthStateChanged, signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { adduser, removeUser } from "../store/userSlice";
@@ -17,39 +15,27 @@ const Header = () => {
   const dispatch = useDispatch();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
-  const user = useSelector((store) => store.user);
-  const userName = user?.displayName;
+  const user = useSelector((state) => state?.user);
+  const userName = user?.name;
   const navigate = useNavigate();
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
-  const handleSignOut = () => {
-    signOut(auth)
-      .then(() => {})
-      .catch((error) => {
-        // An error happened.
-        navigate("/error");
-      });
-  };
 
   const toggleDropDown = () => {
     setIsDropDownOpen(!isDropDownOpen);
   };
   // using fire base API to store all the values into store
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const { uid, email, displayName } = user;
-        dispatch(adduser({ uid: uid, email: email, displayName: displayName }));
-        navigate("/browse");
-      } else {
-        // User is signed out
-        dispatch(removeUser());
+      if (!user) {
         navigate("/");
       }
-    });
-
-    // Unsubscribe when component unmount
-    return () => unsubscribe();
   }, []);
+
+  const handleSignOut = () => {
+    sessionStorage.removeItem("userData");
+    sessionStorage.removeItem("jwtToken");
+    dispatch(removeUser())
+    navigate("/")
+  }
 
   const handleGptSearchClick = () => {
     // toggel gpt search

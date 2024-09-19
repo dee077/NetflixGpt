@@ -1,88 +1,41 @@
 import React, { useRef, useState, useEffect } from "react";
-import { checkValidateData } from "../../utils/validation";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  updateProfile,
-} from "firebase/auth";
-import { auth } from "../../utils/firebase";
-import { useDispatch } from "react-redux";
-import { adduser } from "../store/userSlice";
 import { BG_URL } from "../../utils/constants";
 import Header from "../../components/pages/Header";
+import useAuth from "../../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Login = () => {
   const [isSigninForm, setIsSignInForm] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(null);
-  const dispatch = useDispatch();
 
-  const name = useRef(null);
-  const email = useRef(null);
-  const password = useRef(null);
+  const { submitSignup, submitLogin } = useAuth();
 
-  const defaultEmail = "test1@gmail.com";
-  const defaultPassword = "Test1@12345";
+  const [fullName, setFullName] = useState("Test1");
+  const [email, setEmail] = useState("test1@email.com");
+  const [password, setPassword] = useState("Test1@12345");
 
-  useEffect(() => {
-    email.current.value = defaultEmail;
-    password.current.value = defaultPassword;
-  }, []);
+  const navigate = useNavigate()
+  const user = useSelector((state) => state?.user)
 
   const handleValidationBtn = () => {
-    const userEmail = email.current.value;
-    const userPassword = password.current.value;
-
-    const isDefaultEmail = userEmail === defaultEmail;
-    const isDefaultPassword = userPassword === defaultPassword;
-
-    if (isDefaultEmail && isDefaultPassword) {
-      signInWithEmailAndPassword(auth, defaultEmail, defaultPassword)
-        .then((userCredential) => {
-          const user = userCredential.user;
-        })
-        .catch((error) => {
-          setErrorMessage("Please Sign up.");
-        });
+    if (isSigninForm) {
+      submitLogin({ email, password });
     } else {
-      const message = checkValidateData(userEmail, userPassword);
-      setErrorMessage(message);
-      if (message) return;
-
-      if (!isSigninForm) {
-        createUserWithEmailAndPassword(auth, userEmail, userPassword)
-          .then((userCredential) => {
-            const user = userCredential.user;
-            updateProfile(user, {
-              displayName: name.current.value,
-            })
-              .then(() => {
-                const { uid, email, displayName } = auth.currentUser;
-                dispatch(
-                  adduser({ uid: uid, email: email, displayName: displayName })
-                );
-              })
-              .catch((error) => {
-                setErrorMessage(error.message);
-              });
-          })
-          .catch((error) => {
-            setErrorMessage("Something went wrong.");
-          });
-      } else {
-        signInWithEmailAndPassword(auth, userEmail, userPassword)
-          .then((userCredential) => {
-            const user = userCredential.user;
-          })
-          .catch((error) => {
-            setErrorMessage("Please Sign up.");
-          });
-      }
+      submitSignup({ fullName, email, password });
     }
   };
 
   const toggleSigninForm = () => {
+    console.log(isSigninForm);
     setIsSignInForm(!isSigninForm);
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/browse");
+    }
+  }, []);
+
   return (
     <div>
       <Header />
@@ -102,26 +55,28 @@ const Login = () => {
         </h1>
         {!isSigninForm && (
           <input
-            ref={name}
+            value={fullName}
             type="name"
             placeholder="Name"
             className=" p-3 my-2 w-full rounded-md bg-gray-700"
+            onChange={(e) => setFullName(e.target.value)}
           />
         )}
         <input
-          ref={email}
+          value={email}
           type="email"
           placeholder="Email"
           className=" p-3 my-2 w-full rounded-md bg-gray-700"
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          ref={password}
+          value={password}
           type="password"
           placeholder="Password"
           className=" p-3 my-2 w-full rounded-md bg-gray-700"
           autoComplete="current-password"
+          onChange={(e) => setPassword(e.target.value)}
         />
-        <p className="text-red-500 text-sm">{errorMessage}</p>
         <button
           className="bg-red-700 p-2 my-7 w-full rounded-md"
           onClick={handleValidationBtn}

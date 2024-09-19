@@ -4,11 +4,13 @@ export const
     USER_ICON = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZ3SFVmXoYNHl2D22fjIEAwMuEqrbDYiUUwsWi6-K0AEnh9QZzAhgaOayZ6hFG4Eh_1m4&usqp=CAU";
 
 
+const the_movie_db_bearer_token = sessionStorage.getItem("the_movie_db_bearer_token")
+
 export const API_OPTIONS = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer ' + process.env.REACT_APP_THEMOVIEDB_BEARER_TOKEN 
+        Authorization: 'Bearer ' + the_movie_db_bearer_token
     }
 };
 
@@ -22,6 +24,6 @@ export const SUPPORTED_LANGUAGES = [
     { identifier: 'kan', name: 'Kannada' }
 ]
 
-export const OPENAI_KEY=process.env.REACT_APP_OPENAI_API_KEY
-
 export const DOMAIN = 'https://netflixgpt.deepanshu-sahu27.workers.dev'
+
+export const AUTH_DOMAIN = 'http://localhost:5001'
