@@ -26,4 +26,4 @@ export const SUPPORTED_LANGUAGES = [
 
 export const DOMAIN = 'https://netflixgpt.deepanshu-sahu27.workers.dev'
 
-export const AUTH_DOMAIN = 'http://localhost:5001'
+export const AUTH_DOMAIN = 'https://netflix-gpt.deepanshu-sahu-projects.live'
