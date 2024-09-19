@@ -1,0 +1,8 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/(.*)",
+        "destination": "https://netflix-gpt.deepanshu-sahu-projects.live$1"
+      }
+    ]
+  }
