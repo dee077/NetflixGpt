@@ -33,7 +33,7 @@ const useAuth = () => {
       });
 
       const data = await response.json();
-      console.log(data)
+      // console.log(data)
       if (response.ok) {
           const { jwtToken, user } = data;
           sessionStorage.setItem("userData", (user));
@@ -71,7 +71,7 @@ const useAuth = () => {
       });
 
       const data = await response.json();
-      console.log(data)
+      // console.log(data)
       if (response.ok) {
         const { jwtToken, user, open_ai_key, the_movie_db_bearer_token } = data;
         sessionStorage.setItem("userData", JSON.stringify(user));

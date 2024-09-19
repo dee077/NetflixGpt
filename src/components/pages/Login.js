@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   const toggleSigninForm = () => {
-    console.log(isSigninForm);
+    // console.log(isSigninForm);
     setIsSignInForm(!isSigninForm);
   };
 
