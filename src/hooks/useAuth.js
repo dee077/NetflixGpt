@@ -26,7 +26,6 @@ const useAuth = () => {
     try {
       const response = await fetch(AUTH_DOMAIN + "/api/auth/signup", {
           method: "POST",
-          mode: 'no-cors', 
           headers: {
           "Content-Type": "application/json",
           },
@@ -65,7 +64,6 @@ const useAuth = () => {
     try {
       const response = await fetch(AUTH_DOMAIN + "/api/auth/login", {
         method: "POST",
-        mode: 'no-cors', 
         headers: {
           "Content-Type": "application/json",
         },
