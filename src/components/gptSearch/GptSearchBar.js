@@ -1,15 +1,16 @@
 import React, { useRef, useState } from 'react';
 import language from '../../utils/languageConstants';
 import { useDispatch, useSelector } from 'react-redux';
-import openai from '../../utils/openai';
-import { API_OPTIONS, DOMAIN } from '../../utils/constants';
+import { API_OPTIONS, AUTH_DOMAIN, DOMAIN } from '../../utils/constants';
 import { addGptMovieResult } from '../store/gptSlice';
+import useOpneAi from '../../hooks/useOpenAi';
 
 const GptSearchBar = () => {
     const langKey = useSelector((store) => store.config.lang)
     const searchText = useRef()
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
+    const { fetchGPTResult } = useOpneAi()
 
     const searchMovieTMDB = async (movie) => {
         const data = await fetch(
@@ -30,18 +31,13 @@ const GptSearchBar = () => {
             searchText.current.value +
             ". only give me names of 5 movies, comma separated like the example result given ahead. Example Result: Gadar, Sholay, Don, Golmaal, Koi Mil Gaya";
 
-        const gptResults = await openai.chat.completions.create({
-            messages: [{ role: 'user', content: gptQuery }],
-            model: 'gpt-3.5-turbo',
-        });
-
-        if (!gptResults.choices || !gptResults.choices[0]?.message?.current) {
-        }
-
-        const gptMovies = gptResults.choices[0]?.message?.content.split(",");
+        const gptResults = await fetchGPTResult(gptQuery);
+        // console.log("GPT Results", gptResults)
+        const gptMovies = gptResults?.response?.choices[0]?.message?.content?.split(",");
+        // console.log("GPT Movies", gptMovies)
 
         // for each movie search TMDB API
-        const promiseArray = gptMovies.map((movie) => searchMovieTMDB(movie));
+        const promiseArray = gptMovies?.map((movie) => searchMovieTMDB(movie));
         // we will get promises 
 
         const tmdbResults = await Promise.all(promiseArray);
