@@ -35,7 +35,7 @@ const useAuth = () => {
       const data = await response.json();
       // console.log(data)
       if (response.ok) {
-          const { jwtToken, user } = data;
+          const { jwtToken, user, the_movie_db_bearer_token } = data;
           sessionStorage.setItem("userData", (user));
           sessionStorage.setItem("jwtToken", jwtToken);
           sessionStorage.setItem("the_movie_db_bearer_token", JSON.stringify(the_movie_db_bearer_token));
