@@ -38,6 +38,7 @@ const useAuth = () => {
           const { jwtToken, user } = data;
           sessionStorage.setItem("userData", (user));
           sessionStorage.setItem("jwtToken", jwtToken);
+          sessionStorage.setItem("the_movie_db_bearer_token", JSON.stringify(the_movie_db_bearer_token));
           showToast("Signup successful!");
           dispatch(adduser(user))
           navigate("/browse")
@@ -73,11 +74,10 @@ const useAuth = () => {
       const data = await response.json();
       // console.log(data)
       if (response.ok) {
-        const { jwtToken, user, open_ai_key, the_movie_db_bearer_token } = data;
+        const { jwtToken, user, the_movie_db_bearer_token } = data;
         sessionStorage.setItem("userData", JSON.stringify(user));
         sessionStorage.setItem("jwtToken", jwtToken);
         sessionStorage.setItem("the_movie_db_bearer_token", JSON.stringify(the_movie_db_bearer_token));
-        sessionStorage.setItem("open_ai_key", open_ai_key);
         showToast("Login successful!");
         dispatch(adduser(user))
         navigate("/browse")
