@@ -4,18 +4,19 @@ import Header from "../../components/pages/Header";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import Spinner from "../../utils/Spinner";
 
 const Login = () => {
   const [isSigninForm, setIsSignInForm] = useState(true);
 
-  const { submitSignup, submitLogin } = useAuth();
+  const { submitSignup, submitLogin, isLoading } = useAuth();
 
   const [fullName, setFullName] = useState("Test1");
   const [email, setEmail] = useState("test1@email.com");
   const [password, setPassword] = useState("Test1@12345");
 
-  const navigate = useNavigate()
-  const user = useSelector((state) => state?.user)
+  const navigate = useNavigate();
+  const user = useSelector((state) => state?.user);
 
   const handleValidationBtn = () => {
     if (isSigninForm) {
@@ -35,7 +36,6 @@ const Login = () => {
       navigate("/browse");
     }
   }, []);
-
   return (
     <div>
       <Header />
@@ -77,12 +77,16 @@ const Login = () => {
           autoComplete="current-password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button
-          className="bg-red-700 p-2 my-7 w-full rounded-md"
-          onClick={handleValidationBtn}
-        >
-          {isSigninForm ? "Sign In" : "Sign up"}
-        </button>
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <button
+            className="bg-red-700 p-2 my-2 w-full rounded-md"
+            onClick={handleValidationBtn}
+          >
+            {isSigninForm ? "Sign In" : "Sign up"}
+          </button>
+        )}
         <div className="flex">
           <p className="text-gray-400 text-sm">
             {isSigninForm && "New to Nextflix?"}

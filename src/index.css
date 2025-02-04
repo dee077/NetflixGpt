@@ -38,4 +38,19 @@
       background-position: 200% 0;
     }
   }
+
+  .spinner {
+    border: 6px solid rgba(255, 252, 252, 0.1);
+    border-left-color: #c53030; 
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
   
